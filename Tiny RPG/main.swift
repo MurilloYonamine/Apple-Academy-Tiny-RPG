@@ -7,5 +7,8 @@
 
 import Foundation
 
-print("Hello, World!")
+var hasTheGameEnded : Bool = false;
 
+while !hasTheGameEnded {
+    
+}
