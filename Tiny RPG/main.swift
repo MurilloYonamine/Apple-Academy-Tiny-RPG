@@ -7,8 +7,6 @@
 
 import Foundation
 
-var hasTheGameEnded : Bool = false;
+let gameCore : GameCore = GameCore();
 
-while !hasTheGameEnded {
-    
-}
+gameCore.StartGame();

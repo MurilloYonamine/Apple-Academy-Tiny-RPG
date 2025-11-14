@@ -6,16 +6,14 @@
 //
 
 struct EquipmentData {
-    public var _helmet : Equipment;
-    public var _breastPlate : Equipment;
-    public var _greaves : Equipment;
-    public var _weapon : Equipment;
+    public var _helmet : Helmet;
+    public var _breastPlate : Breastplate;
+    public var _greaves : Greaves;
+    public var _boot : Boot;
+    public var _weapon : Weapon;
     
-    public func changeEquipment(item : Item) -> Item {
-        
-    }
     public func printEquipmentes() -> String {
-        let mensagem : String = "Helmet: \(_helmet)\nBreast Plate: \(_breastPlate)\nGreaves: \(_greaves)\nWeapon: \(_weapon)";
+        let mensagem : String = "Helmet: \(_helmet.name)\nBreast Plate: \(_breastPlate.name)\nGreaves: \(_greaves.name)\nBoot: \(_boot.name)\nWeapon: \(_weapon.name)";
         
         return mensagem;
     }

@@ -8,7 +8,6 @@
 class Character {
     public let characterData : CharacterData;
     public let equipmentData : EquipmentData;
-    public let inventory : Inventory;
     
     // Combat
     public var isCharacterTurn : Bool;
@@ -19,20 +18,26 @@ class Character {
             return characterData._life;
         } set {
             if(characterData._life <= 0) {
-                HandleDeath()
+                HandleDeath();
             }
         }
     }
     
-    private init() {}
+    public init(characterData : CharacterData, equipmentData : EquipmentData, inventoryLimit : Int = 10) {
+        
+        isCharacterTurn = false;
+        
+        self.characterData = characterData;
+        self.equipmentData = equipmentData;
+    }
     
-    public func giveDamage() -> Int {
-        
-    }
-    public func receiveDamage() -> Int {
-        
-    }
-    public func HandleDeath() {
-        
-    }
+//    public func giveDamage() -> Int {
+//        
+//    }
+//    public func receiveDamage() -> Int {
+//        
+//    }
+        public func HandleDeath() {
+            print("Morreu!");
+        }
 }
