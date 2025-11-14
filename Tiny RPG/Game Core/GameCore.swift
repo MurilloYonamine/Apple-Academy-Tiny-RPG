@@ -7,47 +7,54 @@
 
 class GameCore {
     private let _inventoryLimit = 15;
-    
-    public func StartGame() {
-        var hasTheGameEnded : Bool = false;
+    private var hasTheGameEnded : Bool = false;
 
+    public func StartGame() {
+        print("Qual será o nome de seu guerreiro? ");
+        let nome : String = readLine() ?? "";
+        
         while !hasTheGameEnded {
-            print("Qual será o nome de seu guerreiro? ");
-            let nome : String = readLine() ?? "";
-            
             let (character, equipment) = createPlayer(name: nome)
             
             let player : Player = Player(
-                characterData: character,
-                equipmentData: equipment,
-                inventoryLimit: _inventoryLimit
-            )
-            
-            let enemies : Array<Enemy> = generateEnemies();
-            
-            let combatSystem = CombatSystem(
-                Player: player,
-                Enemys: enemies
-            )
-            
-            combatSystem.startCombat();
-            
-            hasTheGameEnded = true;
-        }
-    }
-    private func generateEnemies() -> Array<Enemy> {
-        let randomInt : Int = Int.random(in: 1...4)
-        var arrayEnemies = [Enemy]();
-        for _ in 0...randomInt {
-            let (character, equipment) = createOgre(name: "Ogre")
-            
-            let enemy : Enemy = Enemy(
+                xp: 10,
                 characterData: character,
                 equipmentData: equipment
             )
-            arrayEnemies.append(enemy)
+            let enemy : Enemy = generateEnemy();
+            
+            print("O que deseja fazer?")
+            let options = [
+                "[1] Comecar Combate",
+                "[2] Sair do Jogo"
+            ]
+            
+            let menu = Menu(options: options);
+            let chosenOption = menu.getChosenOption();
+            
+            handleOption(option: chosenOption, player: player, enemy: enemy)
         }
-        return arrayEnemies;
+    }
+    private func handleOption(option : Int, player : Player, enemy : Enemy) {
+        switch option {
+        case 1:
+            let combatSystem = CombatSystem(Player: player, Enemy: enemy)
+            combatSystem.startCombat();
+        case 2:
+            hasTheGameEnded = true;
+        default:
+            print("Nao reconheco esse numero")
+        }
+    }
+    private func generateEnemy() -> Enemy {
+        let (character, equipment) = createOgre(name: "Ogre")
+            
+        let enemy : Enemy = Enemy(
+            characterData: character,
+            equipmentData: equipment
+        )
+        
+        return enemy;
     }
 
     // Deus eu queria fazer um json ou um txt, mas nao vai dar tempo
@@ -57,8 +64,8 @@ class GameCore {
         let characterData : CharacterData = CharacterData(
             _name: name,
             _level: Int(statsValue),
-            _life: statsValue,
-            _damage: statsValue,
+            _life: 200,
+            _damage: 20,
             _critical: statsValue,
             _evasion: statsValue,
             _resistance: statsValue,
@@ -107,7 +114,7 @@ class GameCore {
         let characterData : CharacterData = CharacterData(
             _name: name,
             _level: Int(statsValue),
-            _life: statsValue,
+            _life: 200,
             _damage: statsValue,
             _critical: statsValue,
             _evasion: statsValue,
