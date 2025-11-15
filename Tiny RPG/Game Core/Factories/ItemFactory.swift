@@ -82,14 +82,14 @@ class ItemFactory {
     
     func createRandomEquipment() -> Equipment {
         let equipmentTypes = ["weapon", "helmet", "breastplate", "boot", "greaves"]
-        let randomType = equipmentTypes.randomElement() ?? "weapon"
+        let randomType = equipmentTypes.randomElement() ?? "weapon";
         
         switch randomType {
-            case "weapon": return createRandomWeapon()
-            case "helmet": return createRandomHelmet()
-            case "breastplate": return createRandomBreastplate()
-            case "boot": return createRandomBoot()
-            default: return createRandomGreaves()
+            case "weapon": return createRandomWeapon();
+            case "helmet": return createRandomHelmet();
+            case "breastplate": return createRandomBreastplate();
+            case "boot": return createRandomBoot();
+            default: return createRandomGreaves();
         }
     }
 }

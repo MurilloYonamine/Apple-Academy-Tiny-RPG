@@ -9,8 +9,8 @@ class CombatRewards {
     }
     
     func giveRewards(_ player: Player, for enemy: Enemy) -> Int {
-        let xp = calculateExperience(for: enemy)
-        player.gainExperience(amount: xp)
+        let xp = calculateExperience(for: enemy);
+        player.gainExperience(amount: xp);
         
         if Int.random(in: 1...100) <= 30 {
             giveRandomEquipment(player);

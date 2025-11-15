@@ -1,14 +1,14 @@
 class EnemyFactory {
 
     func createRandomEnemy() -> Enemy {
-        let enemyTypes = ["Ogre", "Goblin", "Orc", "Skeleton"]
-        let randomType = enemyTypes.randomElement() ?? "Ogre"
+        let enemyTypes = ["Ogre", "Goblin", "Orc", "Skeleton"];
+        let randomType = enemyTypes.randomElement() ?? "Ogre";
 
         switch randomType {
-            case "Goblin": return createGoblin()
-            case "Orc": return createOrc()
-            case "Skeleton": return createSkeleton()
-            default: return createOgre()
+            case "Goblin": return createGoblin();
+            case "Orc": return createOrc();
+            case "Skeleton": return createSkeleton();
+            default: return createOgre();
         }
     }
 
@@ -57,7 +57,7 @@ class EnemyFactory {
             _weapon: weapon
         )
 
-        return Enemy(characterData: characterData, equipmentData: equipmentData)
+        return Enemy(characterData: characterData, equipmentData: equipmentData);
     }
 
     private func createOrc() -> Enemy {
@@ -105,7 +105,7 @@ class EnemyFactory {
             _weapon: weapon
         )
 
-        return Enemy(characterData: characterData, equipmentData: equipmentData)
+        return Enemy(characterData: characterData, equipmentData: equipmentData);
     }
 
     private func createSkeleton() -> Enemy {
@@ -153,7 +153,7 @@ class EnemyFactory {
             _weapon: weapon
         )
 
-        return Enemy(characterData: characterData, equipmentData: equipmentData)
+        return Enemy(characterData: characterData, equipmentData: equipmentData);
     }
 
     private func createOgre() -> Enemy {
@@ -201,6 +201,6 @@ class EnemyFactory {
             _weapon: weapon
         );
 
-        return Enemy(characterData: characterData, equipmentData: equipmentData)
+        return Enemy(characterData: characterData, equipmentData: equipmentData);
     }
 }
