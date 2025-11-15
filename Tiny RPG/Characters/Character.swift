@@ -11,10 +11,23 @@ class Character {
         
     public var isCharacterTurn : Bool = true;
     
+    public var TotalEvasion: Float {
+        get {
+            let baseEvasion = characterData._evasion;
+            let bootEvasion = equipmentData._boot.movementSpeed;
+            return baseEvasion + bootEvasion;
+        }
+    }
     public var Life : Float {
         get {
             return characterData._life;
         }
+    }
+
+    public func tryToEvade() -> Bool {
+        let evasionChance = min(TotalEvasion * 2, 40) ;
+        let roll = Float.random(in: 0...100);
+        return roll <= evasionChance;
     }
     
     public func takeDamage(_ damage: Float) {
@@ -50,13 +63,15 @@ class Character {
     }
 
     public func receiveDamage(damage: Float) throws -> Float {
-        if characterData._life <= 0 {
-            throw CombatError.playerDead;
+        if tryToEvade() {
+            print("💨 Evadiu o ataque!")
+            return 0 
         }
+    
+        let totalResistance = characterData._resistance + equipmentData._breastPlate.resistance // Remove o ?
+        let finalDamage = max(damage - totalResistance, 1) 
         
-        let totalResistance = characterData._resistance + equipmentData._breastPlate.resistance;
-        let finalDamage = max(1, damage - totalResistance);
-        return finalDamage;
+        return finalDamage
     }
 
     public func equip(_ equipment: Equipment) throws {
