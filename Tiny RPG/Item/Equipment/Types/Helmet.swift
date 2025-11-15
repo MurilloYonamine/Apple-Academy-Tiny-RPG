@@ -6,9 +6,15 @@
 //
 
 class Helmet : Equipment {
-    public var critical : Float;
-    init(requiredLevel: Int, name: String, critical : Float) {
+    public private(set) var critical : Float;
+    
+    init(requiredLevel: Int, name: String, critical: Float, rarity: Rarity = .Common) {
         self.critical = critical;
-        super.init(requiredLevel: requiredLevel, name: name)
+        super.init(requiredLevel: requiredLevel, name: name, rarity: rarity);
+    }
+    
+    public override func performEquip(on character: Character) throws {
+        character.equipmentData._helmet = self;
+        print("Equipou elmo: \(name) (+\(critical)% crítico)");
     }
 }

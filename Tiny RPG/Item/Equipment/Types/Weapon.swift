@@ -6,10 +6,15 @@
 //
 
 class Weapon : Equipment {
-    public var extraDamage : Float;
+    public private(set) var extraDamage : Float;
     
-    init(requiredLevel: Int, name: String, extraDamage : Float) {
+    init(requiredLevel: Int, name: String, extraDamage: Float, rarity: Rarity = .Common) {
         self.extraDamage = extraDamage;
-        super.init(requiredLevel: requiredLevel, name: name)
+        super.init(requiredLevel: requiredLevel, name: name, rarity: rarity);
+    }
+    
+    public override func performEquip(on character: Character) throws {
+        character.equipmentData._weapon = self;
+        print("Equipou arma: \(name) (+\(extraDamage) dano)");
     }
 }
