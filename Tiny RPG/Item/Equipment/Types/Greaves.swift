@@ -13,7 +13,7 @@ class Greaves : Equipment {
         super.init(requiredLevel: requiredLevel, name: name, rarity: rarity);
     }
     
-    public override func performEquip(character: Character) throws {
+    public override func performEquip(_ character: Character) throws {
         character.equipmentData._greaves = self;
         print("Equipou caneleira: \(name) (+\(agility) velocidade)");
     }

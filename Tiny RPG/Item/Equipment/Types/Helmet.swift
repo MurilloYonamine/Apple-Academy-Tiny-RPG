@@ -13,7 +13,7 @@ class Helmet : Equipment {
         super.init(requiredLevel: requiredLevel, name: name, rarity: rarity);
     }
     
-    public override func performEquip(character: Character) throws {
+    public override func performEquip(_ character: Character) throws {
         character.equipmentData._helmet = self;
         print("Equipou elmo: \(name) (+\(critical)% crítico)");
     }
