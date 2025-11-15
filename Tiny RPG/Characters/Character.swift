@@ -6,21 +6,27 @@
 //
 
 class Character {
-    public let characterData : CharacterData;
-    public let equipmentData : EquipmentData;
+    public var characterData : CharacterData;
+    public var equipmentData : EquipmentData;
         
-    // Combat
     public var isCharacterTurn : Bool = true;
     
-    // Stats
     public var Life : Float {
         get {
             return characterData._life;
-        } set {
-            if(characterData._life <= 0) {
-                HandleDeath();
-            }
         }
+    }
+    
+    public func takeDamage(_ damage: Float) {
+        characterData._life -= damage;
+        if characterData._life <= 0 {
+            characterData._life = 0;
+            HandleDeath();
+        }
+    }
+    
+    public func heal(_ amount: Float) {
+        characterData._life += amount;
     }
     
     public init(characterData : CharacterData, equipmentData : EquipmentData, inventoryLimit : Int = 10) {
@@ -31,30 +37,30 @@ class Character {
     }
     
     public func giveDamage() -> Float {
-        let baseDamage = characterData._damage + equipmentData._weapon.extraDamage
-        let criticalChance = characterData._critical + equipmentData._helmet.critical
+        let baseDamage = characterData._damage + equipmentData._weapon.extraDamage;
+        let criticalChance = characterData._critical + equipmentData._helmet.critical;
         
         if Float.random(in: 0...100) <= criticalChance {
-            let criticalDamage = baseDamage * 1.5
-            print("💥 GOLPE CRÍTICO! 💥")
-            return criticalDamage
+            let criticalDamage = baseDamage * 1.5;
+            print("💥 GOLPE CRÍTICO! 💥");
+            return criticalDamage;
         }
         
-        return baseDamage
+        return baseDamage;
     }
 
     public func receiveDamage(damage: Float) throws -> Float {
         if characterData._life <= 0 {
-            throw CombatError.playerDead
+            throw CombatError.playerDead;
         }
         
-        let totalResistance = characterData._resistance + equipmentData._breastPlate.resistance
-        let finalDamage = max(1, damage - totalResistance)
-        return finalDamage
+        let totalResistance = characterData._resistance + equipmentData._breastPlate.resistance;
+        let finalDamage = max(1, damage - totalResistance);
+        return finalDamage;
     }
 
     public func equip(_ equipment: Equipment) throws {
-        try equipment.equipOn(character: self)
+        try equipment.equipOn(character: self);
     }
 
     public func HandleDeath() {
