@@ -16,18 +16,18 @@ class EnemyFactory {
         let characterData = CharacterData(
             _name: "Goblin",
             _level: 1,
-            _life: 40,
-            _damage: 8,
-            _critical: 15,
-            _evasion: 5,
-            _resistance: 2,
-            _agility: 3
-        );
+            _life: 35,         
+            _damage: 7,     
+            _critical: 18,   
+            _evasion: 7,   
+            _resistance: 1,   
+            _agility: 6       
+        )
 
         let helmet = Helmet(
             requiredLevel: 1, 
-            name: "Elmo Básico", 
-            critical: 0
+            name: "Elmo de Pano", 
+            critical: 1
         );
         let weapon = Weapon(
             requiredLevel: 1, 
@@ -36,20 +36,19 @@ class EnemyFactory {
         );
         let breastplate = Breastplate(
             requiredLevel: 1, 
-            name: "Armadura Básica", 
+            name: "Colete Velho", 
             resistance: 1
         );
         let boot = Boot(
             requiredLevel: 1, 
-            name: "Botas Básicas", 
+            name: "Botas Furadas", 
             movementSpeed: 1
         );
         let greaves = Greaves(
             requiredLevel: 1, 
-            name: "Caneleiras Básicas", 
+            name: "Caneleiras de Pano", 
             agility: 1
         );
-        
         let equipmentData = EquipmentData(
             _helmet: helmet,
             _breastPlate: breastplate,
@@ -57,22 +56,22 @@ class EnemyFactory {
             _boot: boot,
             _weapon: weapon
         )
-        
+
         return Enemy(characterData: characterData, equipmentData: equipmentData)
     }
 
     private func createOrc() -> Enemy {
         let characterData = CharacterData(
             _name: "Orc",
-            _level: 3,
-            _life: 80,
-            _damage: 15,
-            _critical: 8,
-            _evasion: 3,
-            _resistance: 5,
-            _agility: 2
-        );
-        
+            _level: 2,
+            _life: 70,        
+            _damage: 13,      
+            _critical: 7,     
+            _evasion: 2,      
+            _resistance: 4,    
+            _agility: 2     
+        )
+
         let helmet = Helmet(
             requiredLevel: 1, 
             name: "Elmo de Ferro", 
@@ -81,7 +80,7 @@ class EnemyFactory {
         let weapon = Weapon(
             requiredLevel: 1, 
             name: "Machado", 
-            extraDamage: 5
+            extraDamage: 4
         );
         let breastplate = Breastplate(
             requiredLevel: 1, 
@@ -90,15 +89,14 @@ class EnemyFactory {
         );
         let boot = Boot(
             requiredLevel: 1, 
-            name: "Botas de Ferro", 
+            name: "Botas de Couro Grosso", 
             movementSpeed: 1
         );
         let greaves = Greaves(
             requiredLevel: 1, 
             name: "Caneleiras de Ferro", 
-            agility: 2
+            agility: 1
         );
-        
         let equipmentData = EquipmentData(
             _helmet: helmet,
             _breastPlate: breastplate,
@@ -106,7 +104,7 @@ class EnemyFactory {
             _boot: boot,
             _weapon: weapon
         )
-        
+
         return Enemy(characterData: characterData, equipmentData: equipmentData)
     }
 
@@ -114,23 +112,23 @@ class EnemyFactory {
         let characterData = CharacterData(
             _name: "Skeleton",
             _level: 2,
-            _life: 35,
-            _damage: 12,
-            _critical: 20,
-            _evasion: 8,
-            _resistance: 1,
-            _agility: 6
-        );
-        
+            _life: 28,      
+            _damage: 10,     
+            _critical: 22,     
+            _evasion: 10,    
+            _resistance: 0,    
+            _agility: 8       
+        )
+
         let helmet = Helmet(
             requiredLevel: 1, 
             name: "Crânio", 
-            critical: 5
+            critical: 4
         );
         let weapon = Weapon(
             requiredLevel: 1, 
             name: "Espada Enferrujada", 
-            extraDamage: 3
+            extraDamage: 2
         );
         let breastplate = Breastplate(
             requiredLevel: 1, 
@@ -145,9 +143,8 @@ class EnemyFactory {
         let greaves = Greaves(
             requiredLevel: 1, 
             name: "Ossos da Perna", 
-            agility: 3
+            agility: 2
         );
-        
         let equipmentData = EquipmentData(
             _helmet: helmet,
             _breastPlate: breastplate,
@@ -155,36 +152,55 @@ class EnemyFactory {
             _boot: boot,
             _weapon: weapon
         )
-        
+
         return Enemy(characterData: characterData, equipmentData: equipmentData)
     }
 
     private func createOgre() -> Enemy {
         let characterData = CharacterData(
             _name: "Ogre",
-            _level: 4,
-            _life: 120,
-            _damage: 18,
-            _critical: 5,
-            _evasion: 2,
-            _resistance: 8,
-            _agility: 1
+            _level: 3,
+            _life: 130,        
+            _damage: 17,       
+            _critical: 6,     
+            _evasion: 1,      
+            _resistance: 9,    
+            _agility: 1       
+        )
+
+        let helmet = Helmet(
+            requiredLevel: 1, 
+            name: "Elmo de Pedra", 
+            critical: 2
         );
-        
-        let helmet = Helmet(requiredLevel: 1, name: "Elmo de Pedra", critical: 3)
-        let weapon = Weapon(requiredLevel: 1, name: "Clava Gigante", extraDamage: 8)
-        let breastplate = Breastplate(requiredLevel: 1, name: "Armadura de Pedra", resistance: 5)
-        let boot = Boot(requiredLevel: 1, name: "Botas de Pedra", movementSpeed: 0.5)
-        let greaves = Greaves(requiredLevel: 1, name: "Caneleiras de Pedra", agility: 1)
-        
+        let weapon = Weapon(
+            requiredLevel: 1, 
+            name: "Clava Gigante", 
+            extraDamage: 7
+        );
+        let breastplate = Breastplate(
+            requiredLevel: 1, 
+            name: "Armadura de Pedra", 
+            resistance: 5
+        );
+        let boot = Boot(
+            requiredLevel: 1, 
+            name: "Botas de Pedra", 
+            movementSpeed: 0.5
+        );
+        let greaves = Greaves(
+            requiredLevel: 1, 
+            name: "Caneleiras de Pedra", 
+            agility: 1
+        );
         let equipmentData = EquipmentData(
             _helmet: helmet,
             _breastPlate: breastplate,
             _greaves: greaves,
             _boot: boot,
             _weapon: weapon
-        )
-        
+        );
+
         return Enemy(characterData: characterData, equipmentData: equipmentData)
     }
 }
