@@ -7,15 +7,15 @@ enum CombatError: Error {
     
     var localizedDescription: String {
         switch self {
-        case .playerDead:
+        case CombatError.playerDead:
             return "O jogador está morto e não pode agir!"
-        case .enemyDead:
+        case CombatError.enemyDead:
             return "O inimigo já foi derrotado!"
-        case .invalidAction:
+        case CombatError.invalidAction:
             return "Ação inválida no combate!"
-        case .noTargetSelected:
+        case CombatError.noTargetSelected:
             return "Nenhum alvo selecionado!"
-        case .insufficientMana:
+        case CombatError.insufficientMana:
             return "Mana insuficiente para esta ação!"
         }
     }

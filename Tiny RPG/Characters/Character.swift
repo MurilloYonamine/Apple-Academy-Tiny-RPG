@@ -53,8 +53,11 @@ class Character {
         return finalDamage
     }
 
+    public func equip(_ equipment: Equipment) throws {
+        try equipment.equipOn(character: self)
+    }
+
     public func HandleDeath() {
         print("O \(characterData._name) morreu!");
     }
-
 }

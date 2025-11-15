@@ -7,15 +7,15 @@ enum EquipmentError: Error {
     
     var localizedDescription: String {
         switch self {
-        case .levelTooLow(let required, let current):
+        case EquipmentError.levelTooLow(let required, let current):
             return "Level insuficiente! Requerido: \(required), Atual: \(current)"
-        case .incompatibleType:
+        case EquipmentError.incompatibleType:
             return "Tipo de equipamento incompatível!"
-        case .equipmentNotFound:
+        case EquipmentError.equipmentNotFound:
             return "Equipamento não encontrado!"
-        case .inventoryFull:
+        case EquipmentError.inventoryFull:
             return "Inventário cheio!"
-        case .alreadyEquipped:
+        case EquipmentError.alreadyEquipped:
             return "Equipamento já está equipado!"
         }
     }

@@ -28,10 +28,10 @@ class Equipment {
             )
         }
         
-        try performEquip(on: character)
+        try performEquip(character)
     }
-    
-    public func performEquip(on character: Character) throws {
+
+    public func performEquip(_ character: Character) throws {
         throw EquipmentError.incompatibleType
     }
     

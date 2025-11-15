@@ -13,7 +13,7 @@ class Weapon : Equipment {
         super.init(requiredLevel: requiredLevel, name: name, rarity: rarity);
     }
     
-    public override func performEquip(on character: Character) throws {
+    public override func performEquip(character: Character) throws {
         character.equipmentData._weapon = self;
         print("Equipou arma: \(name) (+\(extraDamage) dano)");
     }
