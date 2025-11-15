@@ -9,7 +9,11 @@ class ItemFactory {
         ];
         
         let randomWeapon = weapons.randomElement() ?? ("Espada Básica", 3, 1);
-        return Weapon(requiredLevel: randomWeapon.2, name: randomWeapon.0, extraDamage: Float(randomWeapon.1));
+        return Weapon(
+            requiredLevel: randomWeapon.2, 
+            name: randomWeapon.0, 
+            extraDamage: Float(randomWeapon.1)
+        );
     }
     
     func createRandomHelmet() -> Helmet {
@@ -21,7 +25,11 @@ class ItemFactory {
         ];
         
         let randomHelmet = helmets.randomElement() ?? ("Elmo Básico", 1, 1);
-        return Helmet(requiredLevel: randomHelmet.2, name: randomHelmet.0, critical: Float(randomHelmet.1));
+        return Helmet(
+            requiredLevel: randomHelmet.2, 
+            name: randomHelmet.0, 
+            critical: Float(randomHelmet.1)
+        );
     }
     
     func createRandomBreastplate() -> Breastplate {
@@ -33,7 +41,11 @@ class ItemFactory {
         ];
         
         let randomBreastplate = breastplates.randomElement() ?? ("Armadura Básica", 2, 1);
-        return Breastplate(requiredLevel: randomBreastplate.2, name: randomBreastplate.0, resistance: Float(randomBreastplate.1));
+        return Breastplate(
+            requiredLevel: randomBreastplate.2, 
+            name: randomBreastplate.0, 
+            resistance: Float(randomBreastplate.1)
+        );
     }
     
     func createRandomBoot() -> Boot {
@@ -45,7 +57,11 @@ class ItemFactory {
         ];
         
         let randomBoot = boots.randomElement() ?? ("Botas Básicas", 1, 1);
-        return Boot(requiredLevel: randomBoot.2, name: randomBoot.0, movementSpeed: Float(randomBoot.1));
+        return Boot(
+            requiredLevel: randomBoot.2, 
+            name: randomBoot.0, 
+            movementSpeed: Float(randomBoot.1)
+        );
     }
     
     func createRandomGreaves() -> Greaves {
@@ -57,6 +73,23 @@ class ItemFactory {
         ];
         
         let randomGreaves = greaves.randomElement() ?? ("Caneleiras Básicas", 1, 1);
-        return Greaves(requiredLevel: randomGreaves.2, name: randomGreaves.0, movementSpeed: Float(randomGreaves.1));
+        return Greaves(
+            requiredLevel: randomGreaves.2, 
+            name: randomGreaves.0, 
+            agility: Float(randomGreaves.1)
+        );
+    }
+    
+    func createRandomEquipment() -> Equipment {
+        let equipmentTypes = ["weapon", "helmet", "breastplate", "boot", "greaves"]
+        let randomType = equipmentTypes.randomElement() ?? "weapon"
+        
+        switch randomType {
+            case "weapon": return createRandomWeapon()
+            case "helmet": return createRandomHelmet()
+            case "breastplate": return createRandomBreastplate()
+            case "boot": return createRandomBoot()
+            default: return createRandomGreaves()
+        }
     }
 }
