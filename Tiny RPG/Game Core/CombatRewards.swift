@@ -8,18 +8,15 @@ class CombatRewards {
         return baseXP + (levelMultiplier * 10);
     }
     
-    func giveRewards(_ player: Player, for defeatedEnemy: Enemy) {
-        let xpGained = calculateExperience(for: defeatedEnemy);
-        
-        print("🏆 Vitória!");
-        print("Derrotou: \(defeatedEnemy.characterData._name)");
-        print("XP Ganho: \(xpGained)");
-        
-        player.gainExperience(amount: xpGained);
+    func giveRewards(_ player: Player, for enemy: Enemy) -> Int {
+        let xp = calculateExperience(for: enemy)
+        player.gainExperience(amount: xp)
         
         if Int.random(in: 1...100) <= 30 {
             giveRandomEquipment(player);
         }
+        
+        return xp
     }
     
     private func giveRandomEquipment(_ player: Player) {
